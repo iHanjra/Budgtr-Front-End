@@ -1,0 +1,24 @@
+header {
+  background-color: #8ec5b7;
+}
+
+header nav ul {
+  display: -webkit-flex;
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.navlink {
+  text-decoration: none !important;
+}
+
+.left {
+  margin-right: auto;
+  padding: 25px 25px;
+}
+
+.right {
+  padding: 25px 25px;
+}
