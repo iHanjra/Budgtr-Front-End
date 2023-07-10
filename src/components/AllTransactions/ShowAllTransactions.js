@@ -20,38 +20,51 @@ function ShowAllTransactions() {
   }, []);
 
   let total = transactionsArray.reduce(
-    (accumulator, transactions) => accumulator + transactions.amount,
+    (accumulator, transactions) => accumulator + Number(transactions.amount),
     0
   );
+
+  let formattedTotal = total.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
+  const getTotalColor = (total) => {
+    if (total > 100) {
+      return "green";
+    } else if (total >= 0 && total <= 100) {
+      return "yellow";
+    } else {
+      return "red";
+    }
+  };
   
   return (
     <div>
-      <h2 className="h2-title">Bank Account Total: ${total}</h2>
+      <h2 className={`h2-title ${getTotalColor(total)}`}>Bank Account Total: {formattedTotal}</h2>
       <div className="table-container">
         <table id="transactions">
           <tbody className="Transaction">
+            {transactionsArray.map(({ date, name, amount, id }) => {
+              const formattedDate = new Date(date).toISOString().split("T")[0];
+              return (
+                <tr key={id}>
+                  <td>
+                    <h2>{formattedDate}</h2>
+                  </td>
 
-            {transactionsArray.map(
-              ({ date, name, amount, id }) => {
-                return (
-                  <tr key={id}>
-                    <td>
-                        <h2>{date}</h2>
-                    </td>
+                  <td>
+                    <Link to={`/transactions/${id}`}>
+                      <h2>{name}</h2>
+                    </Link>
+                  </td>
 
-                    <td>
-                      <Link to={`/transactions/${id}`}>
-                        <h2>{name}</h2>
-                      </Link>
-                    </td>
-
-                    <td>
-                     <h2>${amount}</h2>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
+                  <td>
+                    <h2>${amount}</h2>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

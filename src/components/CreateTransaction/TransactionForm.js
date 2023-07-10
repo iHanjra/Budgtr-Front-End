@@ -38,7 +38,7 @@ function TransactionForm() {
           <div className="form-container-input">
             <label htmlFor="date">Date</label>
             <input
-              type="text"
+              type="date"
               id="date"
               value={transaction.date}
               onChange={(e) =>
