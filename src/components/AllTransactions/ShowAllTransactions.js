@@ -23,10 +23,6 @@ function ShowAllTransactions() {
     (accumulator, transactions) => accumulator + transactions.amount,
     0
   );
-
-if (total <= 0) {
-  total = 0;
-}
   
   return (
     <div>

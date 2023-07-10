@@ -1,0 +1,24 @@
+.form-form-container h2 {
+  padding: 25px 25px;
+  font-size: 32px;
+}
+
+.form-container-form {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgb(198, 242, 255);
+  padding: 35px 35px;
+}
+
+.form-container-input {
+  margin: 5px 0;
+}
+
+.form-container-input input {
+  width: 100%;
+}
+
+.form-container-input label {
+  margin-bottom: 5px;
+  display: inline-block;
+}
