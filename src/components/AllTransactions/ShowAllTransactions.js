@@ -20,9 +20,13 @@ function ShowAllTransactions() {
   }, []);
 
   let total = transactionsArray.reduce(
-    (accumulator, transactionsArray) => accumulator + transactionsArray.amount,
+    (accumulator, transactions) => accumulator + transactions.amount,
     0
   );
+
+if (total <= 0) {
+  total = 0;
+}
   
   return (
     <div>
@@ -32,7 +36,7 @@ function ShowAllTransactions() {
           <tbody className="Transaction">
 
             {transactionsArray.map(
-              ({ date, name, amount }, id) => {
+              ({ date, name, amount, id }) => {
                 return (
                   <tr key={id}>
                     <td>
