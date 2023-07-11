@@ -20,7 +20,7 @@ function ShowAllTransactions() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   let total = transactionsArray.reduce(
     (accumulator, transactions) => accumulator + Number(transactions.amount),

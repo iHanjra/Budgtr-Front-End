@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./EditForm.css";
 import { Button } from "react-bootstrap";
@@ -51,7 +51,7 @@ function EditTransaction() {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [[fetchData]]);
   
   return (
     <div className="edit-form-container">
