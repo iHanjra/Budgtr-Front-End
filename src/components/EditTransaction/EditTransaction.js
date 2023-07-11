@@ -15,18 +15,22 @@ function EditTransaction() {
     category: "",
   });
 
-  async function fetchData() {
-    try {
-      let result = await axios.get(
-        `https://budgtr-backend.onrender.com/transactions/get-transaction-by-id/${id}`
-      );
-     const { date, ...transaction } = result.data.data;
-     const formattedDate = new Date(date).toISOString().split("T")[0];
-     setTransaction({ ...transaction, date: formattedDate });
-    } catch (e) {
-      console.log(e);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        let result = await axios.get(
+          `https://budgtr-backend.onrender.com/transactions/get-transaction-by-id/${id}`
+        );
+        const { date, ...transactionData } = result.data.data;
+        const formattedDate = new Date(date).toISOString().split("T")[0];
+        setTransaction({ ...transactionData, date: formattedDate });
+      } catch (e) {
+        console.log(e);
+      }
     }
-  }
+
+    fetchData();
+  }, [id]);
 
   async function handleOnSubmit(e) {
     e.preventDefault();
@@ -48,10 +52,6 @@ function EditTransaction() {
       console.log(e.response);
     }
   }
-
-  useEffect(() => {
-    fetchData();
-  }, [[fetchData]]);
   
   return (
     <div className="edit-form-container">

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./ShowAllTransactions.css";
@@ -6,21 +6,21 @@ import "./ShowAllTransactions.css";
 function ShowAllTransactions() {
   const [transactionsArray, setTransactionsArray] = useState([]);
 
-  async function fetchData() {
-    try {
-      let result = await axios.get(
-        "https://budgtr-backend.onrender.com/transactions"
-      );
-      setTransactionsArray(result.data);
-      console.log(transactionsArray)
-    } catch (e) {
-      console.log(e);
-    }
-  }
+ const fetchData = useCallback(async () => {
+   try {
+     let result = await axios.get(
+       "https://budgtr-backend.onrender.com/transactions"
+     );
+     setTransactionsArray(result.data);
+     console.log(transactionsArray);
+   } catch (e) {
+     console.log(e);
+   }
+ }, [transactionsArray]);
 
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+ useEffect(() => {
+   fetchData();
+ }, [fetchData]);
 
   let total = transactionsArray.reduce(
     (accumulator, transactions) => accumulator + Number(transactions.amount),
