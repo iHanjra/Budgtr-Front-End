@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "./Transaction.css";
+import { Button } from "react-bootstrap";
 
 function Transaction() {
   const { id } = useParams();
@@ -13,7 +14,7 @@ function Transaction() {
   async function fetchData() {
     try {
       let result = await axios.get(
-        `http://localhost:3001/transactions/get-transaction-by-id/${id}`
+        `https://budgtr-backend.onrender.com/transactions/get-transaction-by-id/${id}`
       );
       const { date, ...transaction } = result.data.data;
       const formattedDate = new Date(date).toISOString().split("T")[0];
@@ -23,18 +24,11 @@ function Transaction() {
     }
   }
 
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  }
-
   async function fetchTransactionsData() {
     try {
-      let result = await axios.get("http://localhost:3001/transactions");
+      let result = await axios.get(
+        "https://budgtr-backend.onrender.com/transactions/"
+      );
       setTransactionsArray(result.data);
     } catch (e) {
       console.log(e);
@@ -53,7 +47,7 @@ function Transaction() {
   async function handleConfirmDelete() {
     try {
       await axios.delete(
-        `http://localhost:3001/transactions/delete-transaction-by-id/${id}`
+        `https://budgtr-backend.onrender.com/transactions/delete-transaction-by-id/${id}`
       );
 
       alert("Transaction Deleted");
@@ -72,30 +66,54 @@ return (
     <h3>Transaction Date: {transaction?.date}</h3>
     <div className="transaction-container-content">
       <h2>
-        {transaction?.name} - From {transaction?.from}
+        {transaction?.name} {transaction?.amount < 0 ? "paid to" : "sent from"}{" "}
+        {transaction?.from}
       </h2>
       <h3>${transaction?.amount}</h3>
     </div>
     <div className="transaction-container-navigation">
       <ul>
         <li>
-          <button onClick={() => navigate("/transactions")}>Back</button>
+          <Button
+            Button
+            variant="secondary"
+            onClick={() => navigate("/transactions")}
+          >
+            Back
+          </Button>
         </li>
         <li>
-          <button onClick={() => navigate(`/transactions/${id}/edit`)}>
+          <Button
+            variant="secondary"
+            onClick={() => navigate(`/transactions/${id}/edit`)}
+          >
             Edit
-          </button>
+          </Button>
         </li>
         <li>
-          <button onClick={() => handleDeleteById(id)}>Delete</button>
+          <Button Button variant="danger" onClick={() => handleDeleteById(id)}>
+            Delete
+          </Button>
         </li>
       </ul>
     </div>
     {showConfirmation && (
-      <div className="transaction-container-navigation">
-        <p>Are you sure you want to delete this transaction?</p>
-        <button onClick={handleConfirmDelete}>Yes</button>
-        <button onClick={handleCancelDelete}>No</button>
+      <div className="transaction-deletion-container-navigation">
+        <p>
+          <strong>Are you sure you want to delete this transaction?</strong>
+        </p>
+        <ul>
+          <li>
+            <Button variant="primary" onClick={handleConfirmDelete}>
+              Yes
+            </Button>
+          </li>
+          <li>
+            <Button variant="secondary" onClick={handleCancelDelete}>
+              No
+            </Button>
+          </li>
+        </ul>
       </div>
     )}
   </div>

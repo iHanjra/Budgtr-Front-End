@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./EditForm.css";
+import { Button } from "react-bootstrap";
 
 function EditTransaction() {
   const { id } = useParams();
@@ -17,7 +18,7 @@ function EditTransaction() {
   async function fetchData() {
     try {
       let result = await axios.get(
-        `http://localhost:3001/transactions/get-transaction-by-id/${id}`
+        `https://budgtr-backend.onrender.com/transactions/get-transaction-by-id/${id}`
       );
      const { date, ...transaction } = result.data.data;
      const formattedDate = new Date(date).toISOString().split("T")[0];
@@ -32,7 +33,7 @@ function EditTransaction() {
 
     try {
       await axios.put(
-        `http://localhost:3001/transactions/update-transaction-by-id/${id}`,
+        `https://budgtr-backend.onrender.com/transactions/update-transaction-by-id/${id}`,
         {
           name: transaction.name,
           amount: transaction.amount,
@@ -53,71 +54,98 @@ function EditTransaction() {
   }, []);
   
   return (
-    <div className="form-form-container">
+    <div className="edit-form-container">
       <h2>Edit item</h2>
       <div className="form-container-form">
         <form onSubmit={handleOnSubmit}>
-          <div className="form-container-input">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              value={transaction.date}
-              onChange={(e) =>
-                setTransaction({ ...transaction, date: e.target.value })
-              }
-              required
-            />
+          <div style={{ marginLeft: "10px" }} className="form-container-input">
+            <label htmlFor="date">
+              <strong>Date</strong>
+            </label>
+            <div>
+              <input
+                style={{ width: "185px" }}
+                type="date"
+                id="date"
+                value={transaction.date}
+                onChange={(e) =>
+                  setTransaction({ ...transaction, date: e.target.value })
+                }
+                required
+              />
+            </div>
           </div>
-          <div className="form-container-input">
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              value={transaction.name}
-              onChange={(e) =>
-                setTransaction({ ...transaction, name: e.target.value })
-              }
-              required
-            />
+          <div className="edit-container-input">
+            <label htmlFor="name">
+              <strong>Name</strong>
+            </label>
+            <div>
+              <input
+                type="text"
+                id="name"
+                value={transaction.name}
+                onChange={(e) =>
+                  setTransaction({ ...transaction, name: e.target.value })
+                }
+                required
+              />
+            </div>
           </div>
-          <div className="form-container-input">
-            <label htmlFor="amount">Amount</label>
-            <input
-              id="amount"
-              type="number"
-              value={transaction.amount}
-              onChange={(e) =>
-                setTransaction({ ...transaction, amount: e.target.value })
-              }
-              required
-            />
+          <div className="edit-container-input">
+            <label htmlFor="amount">
+              <strong>Amount</strong>
+            </label>
+            <div>
+              <input
+                id="amount"
+                type="number"
+                value={transaction.amount}
+                onChange={(e) =>
+                  setTransaction({ ...transaction, amount: e.target.value })
+                }
+                required
+              />
+            </div>
           </div>
-          <div className="form-container-input">
-            <label htmlFor="from">From</label>
-            <input
-              type="text"
-              id="from"
-              value={transaction.from}
-              onChange={(e) =>
-                setTransaction({ ...transaction, from: e.target.value })
-              }
-              required
-            />
+          <div className="edit-container-input">
+            <label htmlFor="from">
+              <strong>From</strong>
+            </label>
+            <div>
+              <input
+                type="text"
+                id="from"
+                value={transaction.from}
+                onChange={(e) =>
+                  setTransaction({ ...transaction, from: e.target.value })
+                }
+                required
+              />
+            </div>
           </div>
-          <div className="form-container-input">
-            <label htmlFor="category">Category</label>
-            <input
-              type="text"
-              id="category"
-              value={transaction.category}
-              onChange={(e) =>
-                setTransaction({ ...transaction, category: e.target.value })
-              }
-              required
-            />
+          <div className="edit-container-input">
+            <label htmlFor="category">
+              <strong>Category</strong>
+            </label>
+            <div>
+              <input
+                type="text"
+                id="category"
+                value={transaction.category}
+                onChange={(e) =>
+                  setTransaction({ ...transaction, category: e.target.value })
+                }
+                required
+              />
+            </div>
           </div>
-          <button>Edit Item</button>
+          <Button
+            style={{ margin: "10px" }}
+            variant="outline-secondary"
+            type="submit"
+          >
+            <strong>EDIT ITEM</strong>
+          </Button>
         </form>
       </div>
     </div>

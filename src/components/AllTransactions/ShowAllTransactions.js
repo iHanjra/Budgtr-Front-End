@@ -8,8 +8,11 @@ function ShowAllTransactions() {
 
   async function fetchData() {
     try {
-      let result = await axios.get("http://localhost:3001/transactions");
+      let result = await axios.get(
+        "https://budgtr-backend.onrender.com/transactions"
+      );
       setTransactionsArray(result.data);
+      console.log(transactionsArray)
     } catch (e) {
       console.log(e);
     }
@@ -38,10 +41,18 @@ function ShowAllTransactions() {
       return "red";
     }
   };
+
+  transactionsArray.sort((a, b) => {
+      const dateA = new Date(a.date);
+      const dateB = new Date(b.date);
+      return dateB - dateA;
+    });
   
   return (
     <div>
-      <h2 className={`h2-title ${getTotalColor(total)}`}>Bank Account Total: {formattedTotal}</h2>
+      <h2 className={`h2-title ${getTotalColor(total)}`}>
+        Bank Account Total: {formattedTotal}
+      </h2>
       <div className="table-container">
         <table id="transactions">
           <tbody className="Transaction">

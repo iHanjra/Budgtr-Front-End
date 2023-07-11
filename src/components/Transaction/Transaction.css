@@ -3,11 +3,15 @@
   font-size: 32px;
 }
 
+.transaction-container h3 {
+  padding: 25px 25px;
+  font-size: 32px;
+}
+
 .transaction-container-content {
   max-width: 900px;
   margin: 0 auto;
   background-color: rgb(198, 242, 255);
-  padding: 35px 35px;
 }
 
 .transaction-container-content p {
@@ -24,4 +28,29 @@
   justify-content: space-around;
   margin-top: 25px;
   list-style: none;
+}
+
+.transaction-deletion-container-navigation {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 25px;
+  background-color: rgb(198, 242, 255);
+}
+
+.transaction-deletion-container-navigation p {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+.transaction-deletion-container-navigation ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+}
+
+.transaction-deletion-container-navigation ul li {
+  padding-left: 25px;
+  padding-right: 40px;
+  margin-bottom: 20px;
 }

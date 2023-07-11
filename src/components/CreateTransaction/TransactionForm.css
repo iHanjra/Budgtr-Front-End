@@ -7,15 +7,11 @@
   max-width: 900px;
   margin: 0 auto;
   background-color: rgb(198, 242, 255);
-  padding: 35px 35px;
 }
 
 .form-container-input {
   margin: 5px 0;
-}
-
-.form-container-input input {
-  width: 100%;
+  margin-left: 10px;
 }
 
 .form-container-input label {

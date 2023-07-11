@@ -2,11 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px;
 }
 
 .table-container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 25px;
 }
 
 #transactions {
@@ -17,7 +19,7 @@
 
 #transactions td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 10px;
 }
 
 #transactions tr:nth-child(even) {

@@ -1,0 +1,20 @@
+.edit-form-container h2 {
+  padding: 25px 25px;
+  font-size: 32px;
+}
+
+.edit-container-form {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: rgb(198, 242, 255);
+}
+
+.edit-container-input {
+  margin: 5px 0;
+  margin-left: 10px;
+}
+
+.edit-container-input label {
+  margin-bottom: 5px;
+  display: inline-block;
+}

@@ -12,13 +12,14 @@ header nav ul {
 
 .navlink {
   text-decoration: none !important;
+  color: black;
 }
 
 .left {
   margin-right: auto;
-  padding: 25px 25px;
+  padding: 45px 25px;
 }
 
 .right {
-  padding: 25px 25px;
+  padding: 50px 25px;
 }
