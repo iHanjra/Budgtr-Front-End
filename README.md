@@ -6,7 +6,7 @@ The app provides a comprehensive overview of all transactions, calculating and p
 
 Whether you want to monitor your spending habits, plan for savings, or keep a close eye on your budget, this app offers the essential features to help you stay in control of your finances.
 
-### Deploy Links
+## Deploy Links
 
 Front-end: https://main--endearing-haupia-92a4e3.netlify.app/
 
@@ -16,6 +16,6 @@ Back-end: https://budgtr-backend.onrender.com/transactions
 
 https://trello.com/b/E94MeH5D/budgtr
 
-### Back-end Repository
+## Back-end Repository
 
 https://github.com/iHanjra/Budgtr-Back-End
