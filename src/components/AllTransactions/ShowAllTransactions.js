@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./ShowAllTransactions.css";
@@ -6,21 +6,21 @@ import "./ShowAllTransactions.css";
 function ShowAllTransactions() {
   const [transactionsArray, setTransactionsArray] = useState([]);
 
- const fetchData = useCallback(async () => {
-   try {
-     let result = await axios.get(
-       "https://budgtr-backend.onrender.com/transactions"
-     );
-     setTransactionsArray(result.data);
-     console.log(transactionsArray);
-   } catch (e) {
-     console.log(e);
-   }
- }, [transactionsArray]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let result = await axios.get(
+          "https://budgtr-backend.onrender.com/transactions"
+        );
+        setTransactionsArray(result.data);
+        console.log(transactionsArray);
+      } catch (e) {
+        console.log(e);
+      }
+    };
 
- useEffect(() => {
-   fetchData();
- }, [fetchData]);
+    fetchData();
+  }, [transactionsArray]);
 
   let total = transactionsArray.reduce(
     (accumulator, transactions) => accumulator + Number(transactions.amount),
@@ -43,11 +43,11 @@ function ShowAllTransactions() {
   };
 
   transactionsArray.sort((a, b) => {
-      const dateA = new Date(a.date);
-      const dateB = new Date(b.date);
-      return dateB - dateA;
-    });
-  
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB - dateA;
+  });
+
   return (
     <div>
       <h2 className={`h2-title ${getTotalColor(total)}`}>
@@ -82,6 +82,5 @@ function ShowAllTransactions() {
     </div>
   );
 }
-
 
 export default ShowAllTransactions;

@@ -58,6 +58,7 @@ function EditTransaction() {
       <h2>Edit item</h2>
       <div className="form-container-form">
         <form onSubmit={handleOnSubmit}>
+          
           <div style={{ marginLeft: "10px" }} className="form-container-input">
             <label htmlFor="date">
               <strong>Date</strong>
@@ -75,6 +76,7 @@ function EditTransaction() {
               />
             </div>
           </div>
+          
           <div className="edit-container-input">
             <label htmlFor="name">
               <strong>Name</strong>
@@ -90,6 +92,7 @@ function EditTransaction() {
                 required
               />
             </div>
+          
           </div>
           <div className="edit-container-input">
             <label htmlFor="amount">
@@ -106,6 +109,7 @@ function EditTransaction() {
                 required
               />
             </div>
+          
           </div>
           <div className="edit-container-input">
             <label htmlFor="from">
@@ -123,6 +127,7 @@ function EditTransaction() {
               />
             </div>
           </div>
+          
           <div className="edit-container-input">
             <label htmlFor="category">
               <strong>Category</strong>
@@ -139,6 +144,7 @@ function EditTransaction() {
               />
             </div>
           </div>
+          
           <Button
             style={{ margin: "10px" }}
             variant="outline-secondary"
@@ -146,6 +152,7 @@ function EditTransaction() {
           >
             <strong>EDIT ITEM</strong>
           </Button>
+        
         </form>
       </div>
     </div>

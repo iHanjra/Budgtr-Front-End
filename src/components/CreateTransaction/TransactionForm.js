@@ -36,6 +36,7 @@ function TransactionForm() {
       <h2>Add a new item</h2>
       <div className="form-container-form">
         <form onSubmit={handleOnSubmit}>
+          
           <div className="form-container-input">
             <label htmlFor="date">
               <strong>Date</strong>
@@ -53,6 +54,7 @@ function TransactionForm() {
               />
             </div>
           </div>
+          
           <div className="form-container-input">
             <label htmlFor="name">
               <strong>Name</strong>
@@ -70,6 +72,7 @@ function TransactionForm() {
               />
             </div>
           </div>
+          
           <div className="form-container-input">
             <label htmlFor="amount">
               <strong>Amount</strong>
@@ -86,6 +89,7 @@ function TransactionForm() {
               />
             </div>
           </div>
+          
           <div className="form-container-input">
             <label htmlFor="from">
               <strong>From</strong>
@@ -103,6 +107,7 @@ function TransactionForm() {
               />
             </div>
           </div>
+          
           <div className="form-container-input">
             <label htmlFor="category">
               <strong>Category</strong>
@@ -120,6 +125,7 @@ function TransactionForm() {
               />
             </div>
           </div>
+          
           <Button
             style={{ margin: "10px" }}
             variant="outline-secondary"
@@ -127,6 +133,7 @@ function TransactionForm() {
           >
             <strong>CREATE NEW ITEM</strong>
           </Button>
+        
         </form>
       </div>
     </div>
