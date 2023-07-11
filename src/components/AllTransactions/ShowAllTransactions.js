@@ -13,7 +13,6 @@ function ShowAllTransactions() {
           "https://budgtr-backend.onrender.com/transactions"
         );
         setTransactionsArray(result.data);
-        console.log(transactionsArray);
       } catch (e) {
         console.log(e);
       }
