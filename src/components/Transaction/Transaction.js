@@ -10,22 +10,22 @@ function Transaction() {
   const navigate = useNavigate();
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  async function fetchData() {
-    try {
-      let result = await axios.get(
-        `https://budgtr-backend.onrender.com/transactions/get-transaction-by-id/${id}`
-      );
-      const { date, ...transaction } = result.data.data;
-      const formattedDate = new Date(date).toISOString().split("T")[0];
-      setTransaction({ ...transaction, date: formattedDate });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
   useEffect(() => {
+    async function fetchData() {
+      try {
+        let result = await axios.get(
+          `https://budgtr-backend.onrender.com/transactions/get-transaction-by-id/${id}`
+        );
+        const { date, ...transaction } = result.data.data;
+        const formattedDate = new Date(date).toISOString().split("T")[0];
+        setTransaction({ ...transaction, date: formattedDate });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
     fetchData();
-  }, []);
+  }, [id]);
 
   async function handleDeleteById(id) {
     setShowConfirmation(true);
